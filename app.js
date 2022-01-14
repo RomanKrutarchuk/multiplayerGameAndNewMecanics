@@ -14,10 +14,29 @@ let score = { player1: 0, player2: 0 };
 let gate1;
 let gate2;
 let boxFromButton;
-//
-//
+let difficultyTextbox;
+let scoreBoard;
+let button_Remove;
+function removeButtonOfDifficulty() {
+  button_Remove.remove();
+}
+function createButtonOfDifficulty() {
+  button_Remove = document.createElement("div");
+  button_Remove.classList.add("buttonOfRemove");
+  button_Remove.innerHTML = "Difficulty";
+  body.append(button_Remove);
+  button_Remove.addEventListener("click", function () {
+    changeTheDifficultyOperator();
+    removeBoard();
+    removeScoreBoard();
+    removeButtonOfDifficulty();
+  });
+}
+function removeScoreBoard() {
+  scoreBoard.remove();
+}
 function scoreOfGame() {
-  const scoreBoard = document.createElement("div");
+  scoreBoard = document.createElement("div");
   scoreBoard.classList.add("scoreBoard");
   body.append(scoreBoard);
   scoreOfPlayer1 = document.createElement("div");
@@ -29,7 +48,14 @@ function scoreOfGame() {
   scoreBoard.append(scoreOfPlayer2);
   scoreOfPlayer2.innerHTML = "0";
 }
-function changeTheDifficulty(number_of_repeat, num_of_column) {
+function createDifficultyTextBox() {
+  difficultyTextbox = document.createElement("div");
+  difficultyTextbox.classList.add("changeTheDifficultyTextBox");
+  difficultyTextbox.innerHTML = "Change the difficulty";
+  body.append(difficultyTextbox);
+}
+function changeTheDifficulty(num_of_column) {
+  let number_of_repeat = num_of_column ** 2
   const btn = document.createElement("div");
   btn.classList.add("initButton");
   btn.style.gridTemplateColumns = `repeat(${num_of_column}, auto)`;
@@ -44,17 +70,19 @@ function changeTheDifficulty(number_of_repeat, num_of_column) {
     bordSize = num_of_column;
     initGame();
     scoreOfGame();
-   boxFromButton.remove()
-    // btn.classList.toggle('initButton');
+    boxFromButton.remove();
+    createButtonOfDifficulty();
+    difficultyTextbox.remove();
   });
 }
 function changeTheDifficultyOperator() {
   boxFromButton = document.createElement("div");
   boxFromButton.classList.add("boxFromButton");
   body.append(boxFromButton);
-  changeTheDifficulty(9, 3);
-  changeTheDifficulty(25, 5);
-  changeTheDifficulty(49, 7);
+  createDifficultyTextBox();
+  changeTheDifficulty(3);
+  changeTheDifficulty(5);
+  changeTheDifficulty(7);
 }
 function handelClick(x, y) {
   if (GameFinished === true) {
