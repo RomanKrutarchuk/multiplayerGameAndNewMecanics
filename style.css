@@ -102,7 +102,7 @@ html {
 .scoreOfPlayer2 {
   width: 50%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(28, 39, 54);
   box-sizing: border-box;
   border: 1px solid rgb(0, 0, 0);
   font-size: 40px;
@@ -139,12 +139,7 @@ span {
   box-sizing: border-box;
   border: 1px solid black;
   background-color: rgb(245, 245, 245);
-  border-radius: 
-  /* transition: 0.2s; */
 }
-/* .box:hover{
-  background-color: rgb(136, 136, 255);
-} */
 .circle1 {
   background-size: 100%;
   position: absolute;
@@ -208,6 +203,12 @@ button:active {
   background-size: 300%;
   animation: gradient 1s infinite;
 }
+.IsBlocked{
+  background: linear-gradient(60deg,red,rgb(255, 217, 0));
+  background-size: 300%;
+  animation: gradient 0.3s infinite;
+}
+
 @keyframes gradient {
   0% {
     background-position: left;
